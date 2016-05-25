@@ -1,0 +1,84 @@
+<div class='container'>
+	<h3>Finalisation de la commande</h3>
+	<span>Veuillez renseigner les derniers détails avant de lancer l'expédition</span><br/><br/>
+	<form (submit)="next($event)">
+
+		<table>
+			<tr>
+				<th>Expéditeur</th>
+				<th></th>
+				<th>Destinataire</th>
+			</tr>
+			<tr>
+				<td>
+					<select name="civilite">
+  						<option value="Mr">Monsieur</option>
+  						<option value="Mme">Madame</option>
+					</select>
+					<input type="text" value="Hugues"/>
+					<input type="text" value="DE MAUSSION"/>
+				</td>
+				<td>|</td>
+				<td>
+					<select name="civilite">
+  						<option value="Mr">Monsieur</option>
+  						<option value="Mme">Madame</option>
+					</select>
+					<input [(ngModel)]="model.receive.prenom" placeholder="Prénom" type="text"/>
+					<input [(ngModel)]="model.receive.nom" placeholder="Nom" type="text"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td><input type="text" value="CHRONOPOST"/></td>
+				<td>|</td>
+				<td><input type="text" [(ngModel)]="model.receive.raison_sociale" placeholder="Raison sociale"/></td>
+			</tr>
+			
+			<tr>
+				<td><input type="text" value="3 Avenue Galliéni"/></td>
+				<td>|</td>
+				<td><input type="text" [(ngModel)]="model.receive.adresse1" placeholder="Adresse1"/></td>
+			</tr>
+			
+			<tr>
+				<td><input placeholder="Ligne d'adresse 2" type="text"/></td>
+				<td>|</td>
+				<td><input type="text" [(ngModel)]="model.receive.adresse2" placeholder="Adresse2"/></td>
+			</tr>
+			
+			<tr>
+				<td><input placeholder="étage, digicode, bâtiment..." type="text"/></td>
+				<td>|</td>
+				<td><input placeholder="étage, digicode, bâtiment..." type="text"/></td>
+			</tr>
+			
+			<tr>
+				<td><input type="text" [(ngModel)]="model.shipper.zipCode"/>  <input type="text" [(ngModel)]="model.shipper.country.name"/></td>
+				<td>|</td>
+				<td><input type="text" [(ngModel)]="model.receive.zipCode"/>  <input type="text" [(ngModel)]="model.receive.ville"/></td>
+			</tr>
+			
+			<tr>
+				<td><input type="text" value="0175645760"/></td>
+				<td>|</td>
+				<td><input placeholder="0612131415" type="text"/></td>
+			</tr>
+			
+			<tr>
+				<td><input placeholder="0123344556" type="text"/></td>
+				<td>|</td>
+				<td><input placeholder="0623344556" type="text"/></td>
+			</tr>
+			
+			<tr>
+				<td><input type="text" value="hugues.de-maussion@chronopost.fr"/></td>
+				<td>|</td>
+				<td><input placeholder="lui@domaine.com" type="text"/></td>
+			</tr>			
+
+		</table>
+
+		<button type="submit" (click)="next($event)">PROCÉDER AU PAIEMENT</button>
+	</form>
+</div>

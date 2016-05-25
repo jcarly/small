@@ -1,0 +1,83 @@
+<div class='container'>
+	
+	<form [ngFormModel]="addressForm" (ngSubmit)="onSubmit(addressForm.value)" novalidate>
+		
+		<div>
+			
+			<h4>Votre colis part d'ici</h4>
+			<input ngControl="shipperZipCode" placeholder="Code postal Expï¿½diteur" title="Code postal Expï¿½diteur" autocomplete="OFF" type="text" class="form-control" size="5" [(ngModel)]="userData.shipper.zipCode">
+			
+			<div *ngIf="addressForm.controls.shipperZipCode.hasError('required') && (addressForm.controls.shipperZipCode.touched || submitted)" class="invalid">Le code postal expediteur est obligatoire</div>
+			<div *ngIf="!addressForm.controls.shipperZipCode.valid && !addressForm.controls.shipperZipCode.hasError('required') && (addressForm.controls.shipperZipCode.touched || submitted)" class="invalid">Le code postal expediteur est invalide</div>
+			
+			<!-- 
+			<div *ngIf="!addressForm.controls.shipperZipCode.valid || (!addressForm.controls.shipperZipCode.valid || addressForm.controls.shipperZipCode.touched)">
+      			<span *ngIf="addressForm.controls.shipperZipCode.errors.invalidZipCode">
+      				Le code postal expéditeur est invalide
+   				</span>
+    		</div>
+			
+			<div *ngIf="addressForm.controls.shipperZipCode.dirty && !addressForm.controls.shipperZipCode.valid">
+   				<p *ngIf="addressForm.controls.shipperZipCode.errors.isZipCode">
+      				Le code postal expéditeur est invalide
+   				</p>
+			</div>
+			 -->
+			 
+			<!-- 
+			<div *ngIf="addressForm.controls.shipperZipCode.hasError('required') && (addressForm.controls.shipperZipCode.touched || submitted)" class="invalid">Le code postal expediteur est obligatoire</div>
+			
+			
+			<div *ngIf="!addressForm.controls.shipperZipCode.valid && (addressForm.controls.shipperZipCode.touched || submitted)" class="invalid">Le code postal expï¿½diteur est invalide</div>
+			 -->
+			
+			
+			<select ngControl="shipperCountry" class="form-control"  [(ngModel)]="userData.shipper.country" >
+				<option *ngFor="#c of countriesOrig" [value]="c">{{c.label}}</option>
+	  		</select>
+	  		<!-- 
+	  			<div *ngIf="!addressForm.controls.shipperCountryCode.valid && (addressForm.controls.shipperCountryCode.touched || submitted)" class="invalid">Le code pays expï¿½diteur est obligatoire</div>
+	  		 -->
+		</div>
+		
+		
+		<div>
+			<h4>Et il doit arriver lÃ </h4>
+			<input ngControl="receiveZipCode" placeholder="Code postal Destinataire" autocomplete="OFF" type="text" class="form-control" size="5" [(ngModel)]="userData.receive.zipCode">
+			
+			<!-- 
+			<div *ngIf="addressForm.controls.receiveZipCode.hasError('required') && (addressForm.controls.receiveZipCode.touched || submitted)" class="invalid">Le code postal destinaire est obligatoire</div>
+			<div *ngIf="!addressForm.controls.receiveZipCode.valid && (addressForm.controls.receiveZipCode.touched || submitted)" class="invalid">Le code postal expï¿½diteur est invalide</div>
+			 -->
+			 
+			<select ngControl="receiveCountry" class="form-control"  [(ngModel)]="userData.receive.country" >
+	    		<option *ngFor="#c of countriesDest" [value]="c">{{c.label}}</option>
+	  		</select>
+	  		
+	  		<!-- 	
+	  		<div *ngIf="!addressForm.controls.receiveCountryCode.valid && (addressForm.controls.receiveCountryCode.touched || submitted)" class="invalid">Le code postal destinaire est obligatoire</div>
+			 -->
+		</div>
+		
+		
+		<div>
+			<span class="field-prefix">Colis</span>
+			<input ngControl="nbParcels" placeholder="Nombre de colis" autocomplete="OFF" type="text" class="form-control" size="2" [(ngModel)]="userData.nbParcels">
+	 		
+	 		<!-- 
+	 		<div *ngIf="!addressForm.controls.nbParcels.valid && (addressForm.controls.nbParcels.touched || submitted)" class="invalid">Le nombre de colis doit etre compris entre 1 et 4</div>
+			 -->
+			 
+			<span class="field-prefix">kg</span>
+			
+			<input ngControl="weight" placeholder="Poids total" autocomplete="OFF" type="text" class="form-control" size="5" [(ngModel)]="userData.weight">
+			<!-- 
+			<div *ngIf="!addressForm.controls.weight.valid && (addressForm.controls.weight.touched || submitted)" class="invalid">Le poids doit etre compris entre 1 et 4</div>
+			 -->
+		</div>
+		
+		<button type="submit" class="btn btn-default">Voir les offres sans crÃ©er de compte</button>
+	
+	</form>
+	
+</div>

@@ -1,0 +1,60 @@
+<div class='container'>
+	<form (submit)="next($event)">
+		<div class="recap">
+			<span>Vous expédiez {{userData.nbParcels}} coli(s), faisant un poids total de {{userData.weight}} kilo(s). </span>
+			<span>Point de départ : {{userData.shipper.zipCode}} {{userData.shipper.country.name}}.</span>
+			<span>Point d'arrivée : {{userData.receive.zipCode}} {{userData.receive.country.name}}.</span>
+		</div>
+		<div>
+			<a>Ah non, je me suis trompé !</a>
+		</div>
+		<h3>Choisissez l'offre la plus adaptée à vos besoins</h3>
+		<span>Tous nos prix sont TTC, aucun coût supplémentaire ne vous sera appliqué.</span>		
+		<table>
+			<tr *ngFor="#p of products">
+				<td><span>{{p.label}} |</span></td>
+				<td><button class="link">{{p.detail}} {{p.price}} € </button></td>
+			</tr>
+		</table>
+		
+		<h2>Définissez vos options de livraison</h2>
+		 
+		<div>
+			<h3>MON DEPOT *</h3>
+			<input type="radio" id="typeDepotRelais" name="typeDepot" value="Relais" ><label class="option" for="typeDepotRelais">Je vais déposer mon colis dans un point relais (gratuit). </label><br/>
+			<input type="radio" id="typeDepotAgence" name="typeDepot" value="Agence" ><label class="option" for="typeDepotAgence">Je vais déposer mon colis dans une agence Chronopost (gratuit). </label><br/>
+			<input type="radio" id="typeDepotPoste" name="typeDepot" value="Poste" ><label class="option" for="typeDepotPoste">Je vais déposer mon colis à la Poste (+ 1€). </label><br/>
+			<input type="radio" id="typeDepotESD" name="typeDepot" value="ESD" ><label class="option" for="typeDepotESD">Je souhaite qu'un Captain vienne à la maison récupérer mon colis (+ 5€). </label><br/>
+		</div>
+		
+		<div>
+			<h3>ASSURANCE</h3>
+			<span>Je souhaite assurer mon colis à hauteur de</span>
+			<input type="number"/>
+			€
+		</div>
+		
+		<div>
+			<h3>LIVRAISON LE SAMEDI</h3>
+			<input type="checkbox" />
+			<label>Je souhaite que mon (ou mes) colis soi(en)t livré(s) le samedi (je vais le(s) déposer un vendredi) (+ 2€ / colis)</label>			
+		</div>
+		
+		<div>
+			<h3>OPTIONS D'IMPRESSION *</h3>
+			<input type="radio" value="0" name="mode" (click)="model.mode = 0" checked="checked">
+			<label>J'imprime directement mon étiquette à la maison (gratuit) </label><br/>
+			<input type="radio" value="1" name="mode" (click)="model.mode = 1">
+			<label>Je souhaite que l'étiquette me soit envoyée par e-mail (gratuit) </label><br/>
+			<input type="radio" value="2" name="mode" (click)="model.mode = 2">
+			<label>J'irai imprimer mon étiquette à la Poste sur un automate (gratuit) </label>
+		</div>
+		
+		<br/><br/>
+		<div>
+			<h3>TOTAL : 0 €</h3>
+		</div>
+		
+		<button type="submit" class="btn btn-default">Larguez les amarres !</button>
+	</form>
+</div>
